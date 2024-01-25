@@ -1,2 +1,2 @@
 # tutorials
-Notebooks/scripts for youtube tutorials
+Notebooks/scripts for mlflow mlops tutorials
