@@ -1,0 +1,58 @@
+data_path: "./youtube/GBvideos.csv"
+category_map_path: "./youtube/GB_category_id.json"
+
+# Pre-processing config
+date_column_format:
+  trending_date: "%y.%d.%m"
+  publish_time: "%Y-%m-%dT%H:%M:%S%.fZ"
+
+# Feature engineering config
+ratio_features:
+  likes_to_dislikes:
+    - likes
+    - dislikes
+  likes_to_views:
+    - likes
+    - views
+  comments_to_views:
+    - comment_count
+    - views
+
+difference_features:
+  days_to_trending:
+    - trending_date
+    - publish_time
+
+date_features:
+  trending_date:
+    - weekday
+
+# Filtering config
+max_time_to_trending: 60
+
+# Features config
+join_columns:
+  - video_id
+  - trending_date
+
+base_columns:
+  - views
+  - likes
+  - dislikes
+  - comment_count
+  - comments_disabled
+  - ratings_disabled
+  - video_error_or_removed
+  - likes_to_dislikes
+  - likes_to_views
+  - comments_to_views
+  - trending_date_weekday
+  - channel_title
+  - tags
+  - description
+  - category_id
+
+aggregate_windows:
+  - 7
+  - 30
+  - 180
